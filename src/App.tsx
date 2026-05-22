@@ -12,7 +12,7 @@ import { Globe, Menu, Moon, Sun, ShieldCheck, Users } from 'lucide-react';
 export default function App() {
   const [data, setData] = useState<MemorialPerson[]>([]);
   const [loading, setLoading] = useState(true);
-  const [lang, setLang] = useState<'ar'|'en'>('ar');
+  const [lang, setLang] = useState<'ar'|'en'>('en');
   const [mapTheme, setMapTheme] = useState<'dark'|'light'>('dark');
   
   // App States
@@ -77,11 +77,11 @@ export default function App() {
           
           {/* Global App Title */}
           <div className={`absolute top-5 md:top-8 ${isAr ? 'right-5 md:right-8' : 'left-5 md:left-8'} z-30 pointer-events-none flex flex-col`}>
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-[0.15em] md:tracking-[0.2em] drop-shadow-[0_2px_15px_rgba(0,0,0,0.6)] font-en flex items-center gap-1">
-                  <span className="text-[#C41E3A] animate-pulse">!</span>
+              <h1 dir="ltr" className="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-[0.15em] md:tracking-[0.2em] drop-shadow-[0_2px_15px_rgba(0,0,0,0.6)] font-en flex items-center gap-2">
                   <span className={isDark ? 'text-white' : 'text-slate-900'}>TALK</span> 
                   <span className={isDark ? 'text-white/90' : 'text-slate-800'}>ABOUT</span> 
                   <span className="text-[#556B2F]">ME</span>
+                  <span className="text-[#C41E3A] animate-pulse -ml-1">!</span>
               </h1>
               <p className={`text-[8px] md:text-[10px] font-bold tracking-[0.2em] md:tracking-[0.3em] mt-1 uppercase ${isDark ? 'text-white/60' : 'text-slate-600'} ${isAr ? 'text-right' : 'text-left'}`}>
                   {isAr ? 'أصوات لا تُنسى من فلسطين' : 'UNFORGETTABLE VOICES FROM PALESTINE'}

@@ -36,7 +36,7 @@ export default function App() {
      setIntroTextVisible(false);
      setTimeout(() => {
         setUiVisible(true);
-     }, 800);
+     }, 1500);
   };
 
   const isAr = lang === 'ar';
@@ -55,7 +55,7 @@ export default function App() {
     <div dir={isAr ? 'rtl' : 'ltr'} className={`relative w-screen h-screen overflow-hidden ${isDark ? 'bg-[#0B0F19]' : 'bg-[#e5e7eb]'} selection:bg-[#C41E3A]/30 ${isAr ? 'font-ar' : 'font-en'} flex`}>
       
       {/* Background Map layer */}
-      <div className={`transition-all duration-500 relative ${panelOpen ? 'w-full md:w-[70%]' : 'w-full'} h-full`}>
+      <div className="absolute inset-0 w-full h-full">
         <MapCanvas data={data} theme={mapTheme} onPersonSelect={setSelectedPerson} onIntroEnd={handleIntroEnd} />
         <HumanQuotes lang={lang} theme={mapTheme} />
         <StatsOverlay data={data} lang={lang} theme={mapTheme} />

@@ -1,0 +1,27 @@
+{
+  "name": "Talk About Us",
+  "short_name": "TalkAboutMe",
+  "description": "Interactive memorial for Gaza victims - Every point is a human life that had dreams and goals",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#C41E3A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["news", "education"],
+  "lang": "en",
+  "dir": "auto"
+}

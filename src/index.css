@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+.font-ar { font-family: 'Cairo', 'Montserrat', sans-serif; }
+.font-en { font-family: 'Montserrat', sans-serif; }
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+@theme {
+  --color-palestine-black: #0B0F19;
+  --color-palestine-crimson: #C41E3A;
+  --color-palestine-red: #ef4444;
+  --color-palestine-olive: #556B2F;
+  --color-palestine-olive-light: #6B8E23;
+  --color-palestine-gold: #C9A84C;
+  --color-palestine-white: #F5F0E8;
+  --color-palestine-green: #009736;
+
+  --animate-shimmer: shimmer 3.5s infinite;
+  --animate-fade-up: fadeUp 0.6s ease-out forwards;
+  --animate-slide-in-right: slideInRight 0.5s ease-out forwards;
+  --animate-slide-in-left: slideInLeft 0.5s ease-out forwards;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+  --animate-float-quote: floatQuote 20s linear infinite;
+  --animate-float-quote-reverse: floatQuoteReverse 25s linear infinite;
+  --animate-slide-up-drawer: slideUpDrawer 0.4s cubic-bezier(0.32,0.72,0,1) forwards;
+  --animate-slide-down-drawer: slideDownDrawer 0.3s ease-in forwards;
+  --animate-count-up: countUp 1.5s ease-out forwards;
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 5px rgba(196, 30, 58, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(196, 30, 58, 0.6), 0 0 40px rgba(196, 30, 58, 0.2); }
+  }
+
+  @keyframes floatQuote {
+    0% { transform: translateX(100vw) translateY(0); opacity: 0; }
+    5% { opacity: 0.12; }
+    90% { opacity: 0.12; }
+    100% { transform: translateX(-100vw) translateY(-30px); opacity: 0; }
+  }
+
+  @keyframes floatQuoteReverse {
+    0% { transform: translateX(-100vw) translateY(0); opacity: 0; }
+    5% { opacity: 0.08; }
+    90% { opacity: 0.08; }
+    100% { transform: translateX(100vw) translateY(20px); opacity: 0; }
+  }
+
+  @keyframes slideUpDrawer {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes slideDownDrawer {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+  }
+
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Olive accent line */
+.olive-accent {
+  background: linear-gradient(90deg, var(--color-palestine-olive), var(--color-palestine-olive-light), var(--color-palestine-gold));
+}
+
+/* Crimson accent line */
+.crimson-accent {
+  background: linear-gradient(90deg, var(--color-palestine-crimson), #ef4444, var(--color-palestine-crimson));
+}
+
+/* Bottom drawer handle */
+.drawer-handle {
+  width: 40px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.3);
+  margin: 8px auto;
+}
+
+/* Leaflet overrides for performance */
+.leaflet-container {
+  background: #0B0F19 !important;
+}
+
+.leaflet-tile-pane {
+  will-change: transform;
+}
+
+/* Bottom nav safe area for mobile */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Story card aspect ratio 9:16 */
+.story-card-ratio {
+  aspect-ratio: 9 / 16;
+}
+
+/* Floating quote text */
+.floating-quote {
+  position: absolute;
+  white-space: nowrap;
+  pointer-events: none;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}

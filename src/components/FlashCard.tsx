@@ -74,67 +74,65 @@ export default function FlashCard({ person, lang, theme = 'light', onClose }: { 
                     <X size={18} />
                 </button>
 
-                <div className={`px-6 pt-12 pb-6 flex flex-col items-center text-center relative z-10 flex-1 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                <div className={`px-6 pt-10 pb-4 flex flex-col items-center text-center relative z-10 flex-1 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                     
-                    <p className={`text-[#C41E3A] text-[10px] md:text-xs font-bold tracking-[0.15em] uppercase mb-4 opacity-100 ${isAr ? 'tracking-normal' : ''}`}>
+                    <p className={`text-[#C41E3A] text-[9px] md:text-[10px] font-bold tracking-[0.15em] uppercase mb-2 opacity-90 ${isAr ? 'tracking-normal' : ''}`}>
                         {isAr ? "الاحتلال قتلني! أرجوك تحدث عني!" : "IDF KILLED ME! TALK ABOUT ME!"}
                     </p>
 
-                    <h2 className="text-2xl md:text-3xl font-black mb-4 leading-tight drop-shadow-sm px-2">
+                    <h2 className="text-xl md:text-2xl font-black mb-3 leading-tight drop-shadow-sm px-2">
                         {isAr ? (person.الاسم || person.Name) : (person.Name || person.الاسم)}
                     </h2>
 
-                    <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#556B2F] to-transparent mb-4 opacity-50"></div>
+                    <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#556B2F] to-transparent mb-3 opacity-40"></div>
 
-                    <div className="w-full space-y-3 px-2 mb-4">
-                        <div className={`flex items-center justify-between py-1.5 border-b ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
-                            <span className={`text-[10px] uppercase font-bold tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{isAr ? 'المعرف' : 'ID'}</span>
-                            <span className="text-sm font-black">{person.ID}</span>
+                    <div className="w-full space-y-2 px-2 mb-3">
+                        <div className={`flex items-center justify-between py-1 border-b ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
+                            <span className={`text-[9px] uppercase font-bold tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{isAr ? 'المعرف' : 'ID'}</span>
+                            <span className="text-xs font-black">{person.ID}</span>
                         </div>
 
-                        <div className={`flex items-center justify-between py-1.5 border-b ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
-                            <span className={`text-[10px] uppercase font-bold tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{isAr ? 'العمر' : 'AGE'}</span>
-                            <span className="text-sm font-black">{person.Age} <span className="text-[10px] font-medium opacity-60">{isAr ? 'سنة' : 'y'}</span></span>
+                        <div className={`flex items-center justify-between py-1 border-b ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
+                            <span className={`text-[9px] uppercase font-bold tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{isAr ? 'العمر' : 'AGE'}</span>
+                            <span className="text-xs font-black">{person.Age} <span className="text-[9px] font-medium opacity-60">{isAr ? 'سنة' : 'y'}</span></span>
                         </div>
                         
                         {person.Sex && (
-                            <div className={`flex items-center justify-between py-1.5 border-b ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
-                                <span className={`text-[10px] uppercase font-bold tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{isAr ? 'الجنس' : 'SEX'}</span>
-                                <span className="text-sm font-black">{String(person.Sex).toLowerCase() === 'm' ? (isAr ? 'ذكر' : 'Male') : (String(person.Sex).toLowerCase() === 'f' ? (isAr ? 'أنثى' : 'Female') : person.Sex)}</span>
+                            <div className={`flex items-center justify-between py-1 border-b ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
+                                <span className={`text-[9px] uppercase font-bold tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{isAr ? 'الجنس' : 'SEX'}</span>
+                                <span className="text-xs font-black">{String(person.Sex).toLowerCase() === 'm' ? (isAr ? 'ذكر' : 'Male') : (String(person.Sex).toLowerCase() === 'f' ? (isAr ? 'أنثى' : 'Female') : person.Sex)}</span>
                             </div>
                         )}
                     </div>
 
-                    {/* Humanized Fields */}
+                    {/* Humanized Fields - Optimized for Space */}
                     {dream && (
-                        <div className="w-full text-left mb-3">
-                            <p className="text-sm font-bold text-[#6B8E23] flex items-start gap-1.5 leading-snug">
-                                <span className="shrink-0 mt-0.5">✨</span>
-                                <span>{dream}</span>
+                        <div className="w-full text-left mb-2">
+                            <p className="text-xs font-bold text-[#6B8E23] leading-snug">
+                                {dream}
                             </p>
                         </div>
                     )}
 
                     {lastWords && (
-                        <div className="w-full text-left mb-3">
-                            <p className="text-xs italic font-medium opacity-70 flex items-start gap-1.5 leading-snug">
-                                <span className="shrink-0 mt-0.5">💬</span>
-                                <span>"{lastWords}"</span>
+                        <div className="w-full text-left mb-2">
+                            <p className="text-[11px] italic font-medium opacity-70 leading-snug">
+                                "{lastWords}"
                             </p>
                         </div>
                     )}
 
                     {microStory && (
                         <div className="w-full text-left mt-auto">
-                            <p className="text-xs leading-relaxed opacity-80 italic mb-4">
+                            <p className="text-[11px] leading-relaxed opacity-80 italic mb-3">
                                 {microStory}
                             </p>
                         </div>
                     )}
 
-                    {/* Ministry of Health Note */}
-                    <div className="w-full mt-auto pt-2 border-t border-dashed border-slate-300/30">
-                        <p className={`text-[9px] leading-tight opacity-60 font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                    {/* Ministry of Health Note - Compact */}
+                    <div className="w-full mt-auto pt-2 border-t border-dashed border-slate-300/20">
+                        <p className={`text-[8px] leading-tight opacity-50 font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
                             {isAr 
                                 ? "أنا واحد من 60,199 ضحية تم تسجيلهم وتوثيقهم من قبل وزارة الصحة بغزة حتى 31 يوليو 2025."
                                 : "I am one of 60,199 victims recorded and certified by the Gaza Ministry of Health by 31 July 2025."
@@ -144,30 +142,29 @@ export default function FlashCard({ person, lang, theme = 'light', onClose }: { 
                 </div>
 
                 {/* Share Actions (Hidden during screenshot) */}
-                <div className={`no-capture p-4 flex items-center justify-center gap-3 border-t ${isDark ? 'border-white/10 bg-[#0d1117]' : 'border-slate-200 bg-slate-50'}`}>
+                <div className={`no-capture p-3 flex items-center justify-center gap-2 border-t ${isDark ? 'border-white/10 bg-[#0d1117]' : 'border-slate-200 bg-slate-50'}`}>
                     <button 
                         onClick={handleShare} 
                         disabled={isSharing}
-                        className="flex-1 flex items-center justify-center gap-2 bg-[#C41E3A] hover:bg-[#a01830] text-white py-2.5 rounded-xl text-sm font-bold transition-colors disabled:opacity-50"
+                        className="flex-[2] flex items-center justify-center gap-2 bg-[#C41E3A] hover:bg-[#a01830] text-white py-2 rounded-xl text-xs font-bold transition-colors disabled:opacity-50"
                     >
-                        <Share2 size={16} className={isSharing ? "animate-pulse" : ""} />
+                        <Share2 size={14} className={isSharing ? "animate-pulse" : ""} />
                         {isAr ? 'مشاركة' : 'Share'}
                     </button>
                     
-                    <a href={`https://wa.me/?text=${encodeURIComponent(isAr ? `تحدثوا عن ${person.الاسم}.. ${window.location.href}` : `Talk about ${person.Name}.. ${window.location.href}`)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd5a] transition-colors">
-                        <MessageCircle size={18} />
+                    <a href={`https://wa.me/?text=${encodeURIComponent(isAr ? `تحدثوا عن ${person.الاسم}.. ${window.location.href}` : `Talk about ${person.Name}.. ${window.location.href}`)}`} target="_blank" rel="noopener noreferrer" className="w-9 h-9 flex items-center justify-center bg-[#25D366] text-white rounded-xl hover:bg-[#1ebd5a] transition-colors">
+                        <MessageCircle size={16} />
                     </a>
                     
-                    <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(isAr ? `تحدثوا عن ${person.الاسم} #TalkAboutMe\n${window.location.href}` : `Talk about ${person.Name} #TalkAboutMe\n${window.location.href}`)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-black text-white rounded-xl hover:bg-gray-800 transition-colors">
-                        <X size={18} />
+                    <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(isAr ? `تحدثوا عن ${person.الاسم} #TalkAboutMe\n${window.location.href}` : `Talk about ${person.Name} #TalkAboutMe\n${window.location.href}`)}`} target="_blank" rel="noopener noreferrer" className="w-9 h-9 flex items-center justify-center bg-black text-white rounded-xl hover:bg-gray-800 transition-colors">
+                        <X size={16} />
                     </a>
 
-                    <button onClick={() => navigator.clipboard.writeText(window.location.href)} className={`w-10 h-10 flex items-center justify-center rounded-xl transition-colors ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-slate-200 text-slate-800 hover:bg-slate-300'}`}>
-                        <Copy size={18} />
+                    <button onClick={() => navigator.clipboard.writeText(window.location.href)} className={`w-9 h-9 flex items-center justify-center rounded-xl transition-colors ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-slate-200 text-slate-800 hover:bg-slate-300'}`}>
+                        <Copy size={16} />
                     </button>
                 </div>
             </div>
         </div>
     );
 }
-

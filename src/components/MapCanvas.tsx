@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import { MemorialPerson } from '../types';
 import { useEffect, useMemo, useState } from 'react';
 
-function DroneEffect({ onEffectEnd, onFlightNearingEnd }: { onEffectEnd: () => void, onFlightNearingEnd: () => void }) {
+function DroneEffect({ onEffectEnd }: { onEffectEnd: () => void }) {
   const map = useMap();
   
   useEffect(() => {
@@ -20,17 +20,14 @@ function DroneEffect({ onEffectEnd, onFlightNearingEnd }: { onEffectEnd: () => v
 
       map.flyToBounds(gazaBounds, {
         animate: true,
-        duration: 2.5,     // Reduced to 2.5 seconds for a snappier feel
+        duration: 4.5,     // 4 seconds flight representing drone zooming in
         easeLinearity: 0.1,
         padding: isMobile ? [10, 10] : [50, 50]
       });
 
-      // Show markers slightly before the flight ends to avoid popping
-      setTimeout(onFlightNearingEnd, 2000);
-
-    }, 1000); // Reduced initial wait to just 1 second
+    }, 4500); // Wait 4.5 seconds on the Sea to River map
     return () => clearTimeout(timer);
-  }, [map, onEffectEnd, onFlightNearingEnd]);
+  }, [map, onEffectEnd]);
 
   return null;
 }
@@ -38,7 +35,6 @@ function DroneEffect({ onEffectEnd, onFlightNearingEnd }: { onEffectEnd: () => v
 export default function MapCanvas({ data, theme = 'light', onPersonSelect, onIntroEnd }: { data: MemorialPerson[], theme?: 'light' | 'dark', onPersonSelect: (p: MemorialPerson) => void, onIntroEnd: () => void }) {
   const palestineCenter: [number, number] = [31.95, 35.15];
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [showMarkers, setShowMarkers] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -105,7 +101,7 @@ export default function MapCanvas({ data, theme = 'light', onPersonSelect, onInt
         preferCanvas={true}
       >
         <ZoomControl position="bottomleft" />
-        <DroneEffect onEffectEnd={onIntroEnd} onFlightNearingEnd={() => setShowMarkers(true)} />
+        <DroneEffect onEffectEnd={onIntroEnd} />
         
         <TileLayer
           url={isDark 
@@ -123,7 +119,7 @@ export default function MapCanvas({ data, theme = 'light', onPersonSelect, onInt
         {/* Outer glows for borders */}
         <Polyline positions={gazaBorder} color="#dc2626" weight={12} opacity={0.3} lineCap="round" />
         
-        {showMarkers && displayData.map((p, i) => (
+        {displayData.map((p, i) => (
           p.lat && p.lng && (
             <CircleMarker 
                 key={i} 

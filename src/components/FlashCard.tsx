@@ -170,3 +170,4 @@ export default function FlashCard({ person, lang, theme = 'light', onClose }: { 
         </div>
     );
 }
+

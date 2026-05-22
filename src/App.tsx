@@ -36,7 +36,7 @@ export default function App() {
      setIntroTextVisible(false);
      setTimeout(() => {
         setUiVisible(true);
-     }, 1500);
+     }, 800);
   };
 
   const isAr = lang === 'ar';

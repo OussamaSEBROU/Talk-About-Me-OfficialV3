@@ -75,6 +75,19 @@ export default function App() {
       {/* Main UI Layer (Fades in after Drone Effect) */}
       <div className={`absolute inset-0 pointer-events-none transition-opacity duration-1000 z-20 ${uiVisible ? 'opacity-100' : 'opacity-0'}`}>
           
+          {/* Global App Title */}
+          <div className={`absolute top-5 md:top-8 ${isAr ? 'right-5 md:right-8' : 'left-5 md:left-8'} z-30 pointer-events-none flex flex-col`}>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-[0.15em] md:tracking-[0.2em] drop-shadow-[0_2px_15px_rgba(0,0,0,0.6)] font-en flex items-center gap-1">
+                  <span className="text-[#C41E3A] animate-pulse">!</span>
+                  <span className={isDark ? 'text-white' : 'text-slate-900'}>TALK</span> 
+                  <span className={isDark ? 'text-white/90' : 'text-slate-800'}>ABOUT</span> 
+                  <span className="text-[#556B2F]">ME</span>
+              </h1>
+              <p className={`text-[8px] md:text-[10px] font-bold tracking-[0.2em] md:tracking-[0.3em] mt-1 uppercase ${isDark ? 'text-white/60' : 'text-slate-600'} ${isAr ? 'text-right' : 'text-left'}`}>
+                  {isAr ? 'أصوات لا تُنسى من فلسطين' : 'UNFORGETTABLE VOICES FROM PALESTINE'}
+              </p>
+          </div>
+          
           {/* Top floating nav on desktop */}
           <div className={`hidden md:flex pointer-events-auto absolute top-6 ${isAr ? 'left-6' : 'right-6'} z-20 gap-3`}>
               <button onClick={() => setLang(l => l === 'ar' ? 'en' : 'ar')} className={`backdrop-blur-2xl rounded-full h-12 px-6 flex items-center gap-2 transition-all duration-500 shadow-xl font-bold hover:scale-105 border ${isDark ? 'bg-[#0B0F19]/60 border-white/10 text-white hover:bg-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.4)]' : 'bg-white/70 border-white/60 text-slate-800 shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:bg-white/90'}`}>

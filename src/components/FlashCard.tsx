@@ -88,6 +88,11 @@ export default function FlashCard({ person, lang, theme = 'light', onClose }: { 
 
                     <div className="w-full space-y-3 px-2 mb-4">
                         <div className={`flex items-center justify-between py-1.5 border-b ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
+                            <span className={`text-[10px] uppercase font-bold tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{isAr ? 'المعرف' : 'ID'}</span>
+                            <span className="text-sm font-black">{person.ID}</span>
+                        </div>
+
+                        <div className={`flex items-center justify-between py-1.5 border-b ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
                             <span className={`text-[10px] uppercase font-bold tracking-widest ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{isAr ? 'العمر' : 'AGE'}</span>
                             <span className="text-sm font-black">{person.Age} <span className="text-[10px] font-medium opacity-60">{isAr ? 'سنة' : 'y'}</span></span>
                         </div>
@@ -121,11 +126,21 @@ export default function FlashCard({ person, lang, theme = 'light', onClose }: { 
 
                     {microStory && (
                         <div className="w-full text-left mt-auto">
-                            <p className="text-xs leading-relaxed opacity-80 italic">
+                            <p className="text-xs leading-relaxed opacity-80 italic mb-4">
                                 {microStory}
                             </p>
                         </div>
                     )}
+
+                    {/* Ministry of Health Note */}
+                    <div className="w-full mt-auto pt-2 border-t border-dashed border-slate-300/30">
+                        <p className={`text-[9px] leading-tight opacity-60 font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                            {isAr 
+                                ? "أنا واحد من 60,199 ضحية تم تسجيلهم وتوثيقهم من قبل وزارة الصحة بغزة حتى 31 يوليو 2025."
+                                : "I am one of 60,199 victims recorded and certified by the Gaza Ministry of Health by 31 July 2025."
+                            }
+                        </p>
+                    </div>
                 </div>
 
                 {/* Share Actions (Hidden during screenshot) */}
